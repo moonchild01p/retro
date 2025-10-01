@@ -1,0 +1,983 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Retro Coffee & Food</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f6f2;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #8B4513;
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        nav h1 {
+            color: #fff;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+        
+        .onglets {
+            display: flex;
+        }
+        
+        .onglets a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .onglets a:hover {
+            color: #FFD700;
+        }
+        
+        /* Header */
+        header {
+            background-image: url("../image/RT.jpg") ;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 5%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+        
+        header h4 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+        
+        header button {
+            background-color: #8B4513;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        header button:hover {
+            background-color: #A0522D;
+            transform: translateY(-3px);
+        }
+        
+        /* Menu Container */
+        .menu-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .menu-section {
+            margin-bottom: 3rem;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .menu-title {
+            color: #8B4513;
+            border-bottom: 2px solid #8B4513;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .menu-item {
+            padding: 1rem;
+            border-left: 3px solid #8B4513;
+            background: #f9f6f2;
+            transition: transform 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .menu-item-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .menu-item-price {
+            color: #8B4513;
+            font-weight: bold;
+        }
+        
+        .menu-item-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #8B4513;
+            color: #fff;
+            padding: 2rem 5%;
+            text-align: center;
+        }
+        
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .service {
+            flex: 1;
+            min-width: 250px;
+            margin: 1rem;
+        }
+        
+        .service h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: #FFD700;
+        }
+        
+        footer p {
+            margin-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 1rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .onglets {
+                margin-top: 1rem;
+            }
+            
+            .onglets a {
+                margin: 0 1rem;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header h4 {
+                font-size: 1.2rem;
+            }
+            
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .services {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav h1 {
+                font-size: 1.5rem;
+            }
+            
+            .onglets a {
+                font-size: 0.9rem;
+                margin: 0 0.5rem;
+            }
+            
+            header {
+                height: 60vh;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header h4 {
+                font-size: 1rem;
+            }
+            
+            header button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .menu-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Hamburger Menu pour mobile */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+            
+            .onglets {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                margin-top: 1rem;
+            }
+            
+            .onglets.active {
+                display: flex;
+            }
+            
+            .onglets a {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Le Retro</h1>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="onglets" id="nav-links">
+            <a href="#">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Le Retro,</h1>
+        <h4>Groovy Brews for Funky Souls.</h4>
+        <button onclick="scrollToMenu()">Menu Here</button>
+    </header>
+
+    <section class="main" id="menu">
+        <div class="menu-container">
+            <!-- Section Cafés Chauds -->
+            <div class="menu-section">
+                <h2 class="menu-title">Cafés Chauds ☕</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Espresso</span>
+                            <span class="menu-item-price">100/200 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Café Allongé</span>
+                            <span class="menu-item-price">100/200 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Thé Ortéval</span>
+                            <span class="menu-item-price">100/200 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Infusion</span>
+                            <span class="menu-item-price">150 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Cappuccino</span>
+                            <span class="menu-item-price">200 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Chocolat Chaud</span>
+                            <span class="menu-item-price">200 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Spanish Latte</span>
+                            <span class="menu-item-price">200 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Latte Macchiato</span>
+                            <span class="menu-item-price">250 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Caramel ou vanille</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Chocolat Italien</span>
+                            <span class="menu-item-price">400 DA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Milkshakes & Smoothies -->
+            <div class="menu-section">
+                <h2 class="menu-title">Milkshakes & Smoothies 🥤</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Milkshake Chocolat, Vanille ou Caramel</span>
+                            <span class="menu-item-price">450 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Milkshake Fraise ou Fruit de Saison</span>
+                            <span class="menu-item-price">500 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Milkshake Oreo, Beurre de Cacahuète ou Noisette</span>
+                            <span class="menu-item-price">600 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Smoothie Agrumes</span>
+                            <span class="menu-item-price">450 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Smoothie Fruits Rouges</span>
+                            <span class="menu-item-price">500 DA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Cafés Glacés -->
+            <div class="menu-section">
+                <h2 class="menu-title">Cafés Glacés ❄️</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Cold Brew</span>
+                            <span class="menu-item-price">300 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Ice Latte</span>
+                            <span class="menu-item-price">300 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Ice Spanish</span>
+                            <span class="menu-item-price">400 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Ice Macchiato Vanille/Caramel</span>
+                            <span class="menu-item-price">400 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Perle ou framboise</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Prophécino Vanille, Chocolat ou Caramel</span>
+                            <span class="menu-item-price">550/600 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Affogato Délice</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Cocktails -->
+            <div class="menu-section">
+                <h2 class="menu-title">Cocktails 🍹</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Mojito Classique</span>
+                            <span class="menu-item-price">450 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Mojito Fraise</span>
+                            <span class="menu-item-price">500 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Jus Pressé</span>
+                            <span class="menu-item-price">500 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Mojito Exotique</span>
+                            <span class="menu-item-price">550 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Sunrise</span>
+                            <span class="menu-item-price">550 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Piña Colada</span>
+                            <span class="menu-item-price">600 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Boradora</span>
+                            <span class="menu-item-price">600 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Le Retro</span>
+                            <span class="menu-item-price">650 DA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Boissons -->
+            <div class="menu-section">
+                <h2 class="menu-title">Boissons 🥤</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Eau (Petite Bouteille)</span>
+                            <span class="menu-item-price">50 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Canette</span>
+                            <span class="menu-item-price">120 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Boisson Gazeuse (PM)</span>
+                            <span class="menu-item-price">150 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Trois Écoles</span>
+                            <span class="menu-item-price">500 DA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Desserts -->
+            <div class="menu-section">
+                <h2 class="menu-title">Desserts 🍰</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Flan Caramel</span>
+                            <span class="menu-item-price">250 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Mousse au Chocolat</span>
+                            <span class="menu-item-price">350 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Tiramisu</span>
+                            <span class="menu-item-price">400 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Cheesecake aux Fruits</span>
+                            <span class="menu-item-price">450 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Cheesecake Framboise</span>
+                            <span class="menu-item-price">450 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Crème Glacée Brûlée</span>
+                            <span class="menu-item-price">500 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Trois Écoles</span>
+                            <span class="menu-item-price">500 DA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Pizzas -->
+            <div class="menu-section">
+                <h2 class="menu-title">Pizzas 🍕</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Margherita</span>
+                            <span class="menu-item-price">350 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Sauce tomate, mozzarella, olives, basilic</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Anchois et Câpres</span>
+                            <span class="menu-item-price">700 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Sauce tomate, mozzarella, anchois, câpres</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Légumes Grillés</span>
+                            <span class="menu-item-price">750 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Sauce tomate, mozzarella, courgette, poivron, oignons, champignons frais, aubergine</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Thon</span>
+                            <span class="menu-item-price">850 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Sauce tomate, mozzarella, thon</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Poulet Piquant</span>
+                            <span class="menu-item-price">900 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Sauce chili piquante, poulet, poivron, olive, mozzarella</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Pepperoni</span>
+                            <span class="menu-item-price">950 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Sauce tomate, mozzarella, pepperoni</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Viande Hachée et Œuf</span>
+                            <span class="menu-item-price">1000 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Sauce tomate, viande hachée, œuf, oignons, olive, mozzarella</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Poulet et Fromage Bleu</span>
+                            <span class="menu-item-price">1000 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Sauce blanche, poulet, mozzarella, fromage bleu</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Brie et Fromage Bleu</span>
+                            <span class="menu-item-price">1000 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Sauce tomate, mozzarella, brie, fromage bleu</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Blanche aux Champignons et Viandes</span>
+                            <span class="menu-item-price">1200 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Sauce blanche, champignons frais, mozzarella, jambon, poulet</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Chèvre, Miel et Noix</span>
+                            <span class="menu-item-price">1500 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Sauce blanche, chèvre, miel, noix</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Burrata et Basilic</span>
+                            <span class="menu-item-price">1500 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Sauce tomate, mozzarella, basilic, burrata</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Tomate Cerise et Rosbeef</span>
+                            <span class="menu-item-price">1500 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Sauce tomate, mozzarella, tomate cerise, rosbeef, basilic</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Brunch -->
+            <div class="menu-section">
+                <h2 class="menu-title">Brunch 🍳</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Formule L'État</span>
+                            <span class="menu-item-price">800 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Thé, jus pressé, viennoiserie, beurre et confiture</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Formule Parisienne</span>
+                            <span class="menu-item-price">1000 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Boisson chaude, jus pressé, viennoiserie, toast beurre et confiture</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Formule Turque</span>
+                            <span class="menu-item-price">2000 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Thé rouge, jus pressé, mezzé, plateau fromage-charcuterie, olives, salade concombre tomate, tâchet et fumus</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Sweet Tooth -->
+            <div class="menu-section">
+                <h2 class="menu-title">Sweet Tooth 🧇🥞</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Composez le vôtre</span>
+                            <span class="menu-item-price">À partir de 400 DA</span>
+                        </div>
+                        <p class="menu-item-desc">
+                            Base: Gaufre / Crêpe / Pancake (400 DA)<br>
+                            Topping: Chocolat / Miel / Confiture / Beurre de Cacahuète (100 DA)<br>
+                            Suppléments: Banane / Noix / Fraise / Vermicelles / Pépites de Chocolat / Speculoos / M&M's (150 DA)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Entrées -->
+            <div class="menu-section">
+                <h2 class="menu-title">Entrées 🥗</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Salade Algérienne</span>
+                            <span class="menu-item-price">500 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Salade César</span>
+                            <span class="menu-item-price">850 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Frites</span>
+                            <span class="menu-item-price">150 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Gratin au Poulet</span>
+                            <span class="menu-item-price">600 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Gratin à la Viande Hachée</span>
+                            <span class="menu-item-price">700 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Tagliatelle Bolognaise</span>
+                            <span class="menu-item-price">850 DA</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Tagliatelle Alfredo</span>
+                            <span class="menu-item-price">750 DA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Sandwichs -->
+            <div class="menu-section">
+                <h2 class="menu-title">Sandwichs 🥪</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Cheesy</span>
+                            <span class="menu-item-price">550 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Tenders pané et poulet fumé, gouda, gruyère, sauce fromagère</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Curry</span>
+                            <span class="menu-item-price">600 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Escalope de poulet, sauce curry, gouda, laitue, tomate</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Tunisien</span>
+                            <span class="menu-item-price">600 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Thon, œuf, laitue, tomate, sauce harissa</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Mexicain</span>
+                            <span class="menu-item-price">650 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Poulet, poivron grillé, oignon caramélisé, sauce piquante</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Spécial</span>
+                            <span class="menu-item-price">700 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Viande hachée, œuf, gruyère, sauce fromagère</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Mixte</span>
+                            <span class="menu-item-price">550 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Viande hachée, frites, gouda, laitue, tomate, sauce fromagère</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Tacos Simple (Poulet/Viande Hachée/Poulet Pané)</span>
+                            <span class="menu-item-price">600/650 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Escalope de poulet ou viande hachée ou poulet pané, frites, sauce fromagère</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Tacos Double</span>
+                            <span class="menu-item-price">800 DA</span>
+                        </div>
+                        <p class="menu-item-desc">Deux viandes au choix, frites, sauce fromagère</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Gratiné (Cheddar/Gruyère/Mozzarella)</span>
+                            <span class="menu-item-price">150 DA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+           <!-- Section Burgers -->
+<div class="menu-section">
+    <h2 class="menu-title">Burgers 🍔</h2>
+    <div class="menu-items">
+        <div class="menu-item">
+            <div class="menu-item-header">
+                <span class="menu-item-name">Cheese Burger</span>
+                <span class="menu-item-price">650/950 DA</span>
+            </div>
+            <p class="menu-item-desc">Steak haché, laitue, tomate, sauce Retro, cheddar</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-header">
+                <span class="menu-item-name">Buffalo HOT Burger</span>
+                <span class="menu-item-price">800/1000 DA</span>
+            </div>
+            <p class="menu-item-desc">Steak haché, œuf, laitue, tomate, oignon caramélisé, pickles, sauce buffalo, cheddar</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-header">
+                <span class="menu-item-name">BBQ Bacon Burger</span>
+                <span class="menu-item-price">850/1250 DA</span>
+            </div>
+            <p class="menu-item-desc">Steak haché, bacon, laitue, tomate, oignon caramélisé, sauce BBQ, cheddar</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-header">
+                <span class="menu-item-name">Blue Oignon Burger</span>
+                <span class="menu-item-price">900/1200 DA</span>
+            </div>
+            <p class="menu-item-desc">Steak haché, oignon frit, laitue, tomate, sauce roquefort, cheddar</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-header">
+                <span class="menu-item-name">Oh my Minis!!</span>
+                <span class="menu-item-price">850 DA</span>
+            </div>
+            <p class="menu-item-desc">6 mini cheese burgers avec dip au fromage</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-header">
+                <span class="menu-item-name">Minis Mystery Box!!</span>
+                <span class="menu-item-price">100 DA</span>
+            </div>
+            <p class="menu-item-desc">6 mini burgers surprises avec dip au fromage</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-header">
+                <span class="menu-item-name">Crispy Chicken</span>
+                <span class="menu-item-price">600/800 DA</span>
+            </div>
+            <p class="menu-item-desc">Poulet crispy, laitue, tomate, sauce Retro</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-header">
+                <span class="menu-item-name">Poulet Coupon</span>
+                <span class="menu-item-price">700/900 DA</span>
+            </div>
+            <p class="menu-item-desc">Tomate, sauce champignons, cheddar</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-header">
+                <span class="menu-item-name">Le Gourmand</span>
+                <span class="menu-item-price">750/950 DA</span>
+            </div>
+            <p class="menu-item-desc">Poulet crispy, poulet fumé, œuf, laitue, tomate, oignon caramélisé, sauce fromagère, cheddar</p>
+        </div>
+    </div>
+</div>
+            <!-- Note de fin -->
+            <div class="menu-section" style="text-align: center; background: #8B4513; color: white;">
+                <p>Nous espérons que chaque bouchée vous apporte autant de plaisir que nous en avons eu à la préparer. À très bientôt autour d'un nouveau repas !</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="services">
+            <div class="service">
+                <h3>À propos</h3>
+                <p>Le Retro Coffee & Food</p>
+                <p>Bienvenue au Rétro, où chaque gorgée vous ramène dans le temps.
+Notre café chaleureux allie charme vintage, musique envoûtante et café fraîchement préparé pour des moments qui semblent intemporels.
+Au Rétro, hier n’a jamais eu aussi bon goût.</p>
+            </div>
+            <div class="service">
+                <h3>Adresse</h3>
+                <p>loubet</p>
+                <p>Oran, Algérie</p>
+            </div>
+            <div class="service">
+                <h3>Réseaux sociaux</h3>
+                <p>tiktok</p>
+                <p>Instagram</p>
+            </div>
+        </div>
+        <p>Contact : 07685843394 | &copy; 2025, Le Retro.</p>
+    </footer>
+
+    <script>
+        // Script pour le menu mobile
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Fonction pour faire défiler jusqu'au menu
+        function scrollToMenu() {
+            document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Fermer le menu mobile en cliquant sur un lien
+        document.querySelectorAll('.onglets a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
